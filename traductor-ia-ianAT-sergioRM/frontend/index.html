@@ -1,11 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Traductor</title>
+  </head>
+  <body>
+    <header>
+      <h1>Traductor</h1>
+    </header>
+
+    <main>
+      <section>
+        <form id="form-traduccion">
+          <p>
+            Introduce el texto, elige idiomas y pulsa en
+            <strong>Traducir</strong>.
+          </p>
+
+          <div class="idioma-seleccion">
+            <h4>Configuración de idiomas</h4>
+
+            <div>
+              <label for="idioma-origen">Idioma origen</label>
+              <select id="idioma-origen" name="idioma-origen">
+                <option value="es" selected>Español</option>
+                <option value="en">Inglés</option>
+                <option value="fr">Francés</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="idioma-destino">Idioma destino</label>
+              <select id="idioma-destino" name="idioma-destino">
+                <option value="en" selected>Inglés</option>
+                <option value="es">Español</option>
+                <option value="fr">Francés</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="texto-origen">Texto a traducir</label>
+            <textarea
+              id="texto-origen"
+              name="texto-origen"
+              placeholder="Escribe aquí tu texto..."
+            ></textarea>
+          </div>
+
+          <div>
+            <button type="submit">Traducir</button>
+            <button type="reset">Limpiar</button>
+          </div>
+        </form>
+
+        <section>
+          <h3>Resultado</h3>
+          <p id="texto-traducido">Ejemplo de un resultado Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed earum cum vel eius, tenetur asperiores harum laudantium reprehenderit rem, nemo a obcaecati hic. Dolore saepe, itaque quidem vitae porro nostrum.</p>
+          <div id="indicador-carga" hidden>Traduciendo...</div>
+        </section>
+      </section>
+
+      <section>
+        <h2>Historial</h2>
+        <ul id="lista-historial">
+          <li>Ejemplo 1</li>
+          <li>Ejemplo 2</li>
+          <li>Ejemplo 3</li>
+          <li>Ejemplo 4</li>
+          <li>Ejemplo 5</li>
+        </ul>
+        <button id="btn-borrar-historial">Borrar historial</button>
+      </section>
+
+      <section hidden>
+        <h3 hidden>Error:</h3>
+        <div id="mensaje-error"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 Traductor Proyecto Ian y Sergio</p>
+    </footer>
+  </body>
 </html>
