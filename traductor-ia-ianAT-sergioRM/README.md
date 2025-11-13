@@ -1,1 +1,1 @@
-# Proyecto IA prueba
+# Proyecto IA
