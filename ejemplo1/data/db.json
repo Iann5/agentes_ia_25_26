@@ -1,0 +1,139 @@
+{
+  "books": [
+    {
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "title": "Structure and Interpretation of Computer Programs (SICP)",
+      "authorId": 3,
+      "year": 1996,
+      "topic": "Computer Science Fundamentals",
+      "language": "Scheme"
+    },
+    {
+      "id": "4",
+      "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+      "authorId": 4,
+      "year": 1994,
+      "topic": "Software Architecture",
+      "language": "C++, Smalltalk"
+    },
+    {
+      "id": "5",
+      "title": "Introduction to Algorithms",
+      "authorId": 5,
+      "year": 2009,
+      "topic": "Algorithms and Data Structures",
+      "language": "Pseudocode"
+    },
+    {
+      "id": "6",
+      "title": "JavaScript: The Good Parts",
+      "authorId": 6,
+      "year": 2008,
+      "topic": "Web Development",
+      "language": "JavaScript"
+    },
+    {
+      "id": "7",
+      "title": "You Don't Know JS Yet: Get Started",
+      "authorId": 7,
+      "year": 2020,
+      "topic": "Web Development",
+      "language": "JavaScript"
+    },
+    {
+      "id": "8",
+      "title": "Code Complete: A Practical Handbook of Software Construction",
+      "authorId": 8,
+      "year": 2004,
+      "topic": "Software Engineering",
+      "language": "General"
+    },
+    {
+      "id": "9",
+      "title": "The Go Programming Language",
+      "authorId": 9,
+      "year": 2015,
+      "topic": "Programming Language",
+      "language": "Go"
+    },
+    {
+      "id": "10",
+      "title": "Learning Python",
+      "authorId": 10,
+      "year": 2013,
+      "topic": "Programming Language",
+      "language": "Python"
+    }
+  ],
+  "authors": [
+    {
+      "id": "2",
+      "firstName": "David",
+      "lastName": "Thomas",
+      "country": "USA",
+      "expertise": "Software Development"
+    },
+    {
+      "id": "3",
+      "firstName": "Harold",
+      "lastName": "Abelson",
+      "country": "USA",
+      "expertise": "Computer Science, LISP"
+    },
+    {
+      "id": "4",
+      "firstName": "Erich",
+      "lastName": "Gamma",
+      "country": "Switzerland",
+      "expertise": "Object-Oriented Design, Patterns"
+    },
+    {
+      "id": "5",
+      "firstName": "Thomas",
+      "lastName": "H. Cormen",
+      "country": "USA",
+      "expertise": "Algorithms"
+    },
+    {
+      "id": "6",
+      "firstName": "Douglas",
+      "lastName": "Crockford",
+      "country": "USA",
+      "expertise": "JavaScript, JSON"
+    },
+    {
+      "id": "7",
+      "firstName": "Kyle",
+      "lastName": "Simpson",
+      "country": "USA",
+      "expertise": "JavaScript"
+    },
+    {
+      "id": "8",
+      "firstName": "Steve",
+      "lastName": "McConnell",
+      "country": "USA",
+      "expertise": "Software Engineering"
+    },
+    {
+      "id": "9",
+      "firstName": "Alan",
+      "lastName": "A. A. Donovan",
+      "country": "USA",
+      "expertise": "Go Language"
+    },
+    {
+      "id": "10",
+      "firstName": "Mark",
+      "lastName": "Lutz",
+      "country": "USA",
+      "expertise": "Python"
+    },
+    {
+      "id": "9034"
+    }
+  ]
+}
