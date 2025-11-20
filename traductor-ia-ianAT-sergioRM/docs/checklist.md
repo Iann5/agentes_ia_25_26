@@ -16,37 +16,37 @@
 
 ## 💾 Parte 2: Backend
 
-- [ ] Crear archivo `backend/db.js` y configurar SQLite3 con `better-sqlite3` (Ian)
-- [ ] Crear `backend/server.js` con Express, CORS y dotenv (Ian)
-- [ ] Crear `backend/routes.js` con endpoints: (Ian)
-  - [ ] GET `/api/health` (Ian)
-  - [ ] POST `/api/translate` (Ian)
-  - [ ] GET `/api/translations` (Ian)
-  - [ ] GET `/api/translations/:id` (Ian)
-  - [ ] DELETE `/api/translations/:id` (Ian)
-  - [ ] DELETE `/api/translations` (Ian)
-  - [ ] GET `/api/languages` (Ian)
-- [ ] Implementar funciones principales en `backend/services.js`: (Sergio)
-  - [ ] `traducir(text, sourceLang, targetLang)`(Sergio)
-  - [ ] `obtenerHistorial(filtros)`(Sergio)
-  - [ ] `obtenerTraduccionPorId(id)`(Sergio)
-  - [ ] `eliminarTraduccion(id)`(Sergio)
-  - [ ] `limpiarHistorial()`(Sergio)
-  - [ ] `validarIdioma(codigo)`(Sergio)
-- [ ] Integrar Ollama (`OLLAMA_URL=http://localhost:11434`) (Sergio)
-- [ ] Insertar traducciones en BD y devolver objeto completo (Ian)
-- [ ] Probar endpoints con REST Client o Postman (Ian)
+- [x] Crear archivo `backend/db.js` y configurar SQLite3 con `better-sqlite3` (Ian)
+- [x] Crear `backend/server.js` con Express, CORS y dotenv (Ian)
+- [x] Crear `backend/routes.js` con endpoints: (Ian)
+  - [x] GET `/api/health` (Ian)
+  - [x] POST `/api/translate` (Ian)
+  - [x] GET `/api/translations` (Ian)
+  - [x] GET `/api/translations/:id` (Ian)
+  - [x] DELETE `/api/translations/:id` (Ian)
+  - [x] DELETE `/api/translations` (Ian)
+  - [x] GET `/api/languages` (Ian)
+- [x] Implementar funciones principales en `backend/services.js`: (Sergio)
+  - [x] `traducir(text, sourceLang, targetLang)`(Sergio)
+  - [x] `obtenerHistorial(filtros)`(Sergio)
+  - [x] `obtenerTraduccionPorId(id)`(Sergio)
+  - [x] `eliminarTraduccion(id)`(Sergio)
+  - [x] `limpiarHistorial()`(Sergio)
+  - [x] `validarIdioma(codigo)`(Sergio)
+- [x] Integrar Ollama (`OLLAMA_URL=http://localhost:11434`) (Sergio)
+- [x] Insertar traducciones en BD y devolver objeto completo (Ian)
+- [x] Probar endpoints con REST Client o Postman (Ian)
 
 ---
 
 ## 🎨 Parte 3: Frontend 
 
-- [ ] Crear `frontend/index.html` con estructura semántica: (Sergio)
-  - [ ] Área para texto a traducir
-  - [ ] Selectores de idioma origen y destino
-  - [ ] Botones "Traducir" y "Limpiar"
-  - [ ] Resultado y lista de historial
-- [ ] Crear `frontend/style.css` con estilos responsivos (Sergio)
+- [x] Crear `frontend/index.html` con estructura semántica: (Sergio)
+  - [x] Área para texto a traducir
+  - [x] Selectores de idioma origen y destino
+  - [x] Botones "Traducir" y "Limpiar"
+  - [x] Resultado y lista de historial
+- [x] Crear `frontend/style.css` con estilos responsivos (Sergio)
 - [ ] Crear `frontend/main.js`: (Sergio)
   - [ ] Fetch a `/api/translate`
   - [ ] Mostrar traducción en UI
@@ -74,7 +74,7 @@
 
 ## 🐳 Parte 5: Dockerización (Ambos)
 
-- [ ] Crear `backend/Dockerfile` (imagen base: node:20-alpine)
+- [x] Crear `backend/Dockerfile` (imagen base: node:20-alpine)
 - [ ] Crear `docker-compose.yml` con servicios:
   - [ ] Backend (puerto 3000)
   - [ ] Ollama (puerto 11434)

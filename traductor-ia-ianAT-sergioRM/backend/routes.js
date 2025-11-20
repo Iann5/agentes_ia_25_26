@@ -1,6 +1,5 @@
 // backend/routes.js
 import { Router } from 'express';
-import axios from 'axios';
 import db from './db.js';
 import { traducir } from './services.js';
 
