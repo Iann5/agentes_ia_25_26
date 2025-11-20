@@ -43,19 +43,29 @@ export async function traducir(text, sourceLang, targetLang) {
     throw new Error("El texto no puede superar los 5000 caracteres.");
   }
 
-  // 2. CONSTRUIR PROMPT
+  // 2. MAPEO DE CÓDIGOS A NOMBRES PARA EL PROMPT
+  const idiomaMap = {
+    es: "español",
+    en: "inglés",
+    fr: "francés",
+  };
+
+  const sourceNombre = idiomaMap[sourceLang];
+  const targetNombre = idiomaMap[targetLang];
+
+  // 3. CONSTRUIR PROMPT
   const prompt = `
-Eres un traductor profesional. Traduce el siguiente texto del idioma ${sourceLang}
-al idioma ${targetLang}. Responde ÚNICAMENTE con el texto traducido, sin comentarios extra.
+Eres un traductor profesional. Traduce el siguiente texto del idioma ${sourceNombre}
+al idioma ${targetNombre}. Responde ÚNICAMENTE con el texto traducido, sin comentarios extra.
 
 Texto a traducir:
 ${text}
   `;
 
-  // 3. MEDIR TIEMPO
+  // 4. MEDIR TIEMPO
   const inicio = Date.now();
 
-  // 4. LLAMAR A OLLAMA
+  // 5. LLAMAR A OLLAMA
   const respuesta = await fetch(`${OLLAMA_URL}/api/generate`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -75,6 +85,7 @@ ${text}
 
   const traduccion = datos.response?.trim() || "";
 
+  // 6. GUARDAR EN BD (usar los códigos originales)
   const stmt = db.prepare(`
     INSERT INTO traducciones (texto_original, idioma_origen, idioma_destino, texto_traducido, modelo, duracion_ms)
     VALUES (?, ?, ?, ?, ?, ?)
@@ -89,6 +100,7 @@ ${text}
     duracion
   );
 
+  // 7. DEVOLVER RESULTADO
   return {
     id: result.lastInsertRowid,
     texto_original: text,
@@ -99,6 +111,7 @@ ${text}
     duracion_ms: duracion,
   };
 }
+
 
 /**
  * Recupera traducciones guardadas en la BD.

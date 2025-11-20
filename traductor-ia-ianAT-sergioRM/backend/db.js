@@ -29,7 +29,7 @@ db.exec(`
     idioma_origen TEXT NOT NULL,
     idioma_destino TEXT NOT NULL,
     modelo TEXT,
-    duration_ms INTEGER,
+    duracion_ms INTEGER,
     created_at TEXT DEFAULT CURRENT_TIMESTAMP
   );
 `);

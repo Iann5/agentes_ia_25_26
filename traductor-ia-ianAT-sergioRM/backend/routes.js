@@ -2,6 +2,7 @@
 import { Router } from 'express';
 import axios from 'axios';
 import db from './db.js';
+import { traducir } from './services.js';
 
 const router = Router();
 
@@ -18,7 +19,7 @@ router.get('/health', async (req, res) => {
 });
 
 // 🟢 POST /api/translate
-router.post("/api/translate", async (req, res) => {
+router.post("/translate", async (req, res) => {
   try {
     const { text, sourceLang, targetLang } = req.body;
 
@@ -31,6 +32,7 @@ router.post("/api/translate", async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
+
 
 // 🟢 GET /api/translations
 router.get('/translations', (req, res) => {
