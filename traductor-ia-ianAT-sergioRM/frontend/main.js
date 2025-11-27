@@ -1,5 +1,4 @@
 // main.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("form-traduccion");
   const textoOrigen = document.getElementById("texto-origen");
@@ -19,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       listaHistorial.innerHTML = "";
       data.forEach((item) => {
         const li = document.createElement("li");
-        li.textContent = `${item.idioma_origen} → ${item.idioma_destino}: ${item.texto_traducido}`;
+        li.textContent = `${item.idioma_origen} → ${item.idioma_destino}: ${item.texto_original}--${item.texto_traducido}`;
         listaHistorial.appendChild(li);
       });
     } catch (err) {
@@ -36,17 +35,17 @@ document.addEventListener("DOMContentLoaded", () => {
     indicadorCarga.hidden = false;
     mensajeError.parentElement.hidden = true;
 
-    const payload = {
+    const info = {
       text: textoOrigen.value,
       sourceLang: idiomaOrigen.value,
       targetLang: idiomaDestino.value,
     };
 
-    try {
+    try {   
       const res = await fetch("http://localhost:3000/api/translate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(info),
       });
 
       if (!res.ok) throw new Error("Error en la traducción");
