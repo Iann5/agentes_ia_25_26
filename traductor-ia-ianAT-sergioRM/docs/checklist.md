@@ -59,16 +59,16 @@
 
 ## 🧪 Parte 4: Validación y Tests
 
-- [ ] Crear `validacion.http` con tests:  (Sergio)
-  - [ ] GET `/api/health`
-  - [ ] POST `/api/translate` (válido y erróneo)
-  - [ ] GET `/api/translations`
-  - [ ] GET `/api/translations/:id`
-  - [ ] DELETE `/api/translations/:id`
-  - [ ] DELETE `/api/translations`
-  - [ ] GET `/api/languages`
-- [ ] Verificar respuestas correctas (200, 400, 404)  (Sergio)
-- [ ] Comprobar comportamiento ante entradas inválidas (Ian)
+- [x] Crear `validacion.http` con tests:  (Sergio)
+  - [x] GET `/api/health`
+  - [x] POST `/api/translate` (válido y erróneo)
+  - [x] GET `/api/translations`
+  - [x] GET `/api/translations/:id`
+  - [x] DELETE `/api/translations/:id`
+  - [x] DELETE `/api/translations`
+  - [x] GET `/api/languages`
+- [x] Verificar respuestas correctas (200, 400, 404)  (Sergio)
+- [x] Comprobar comportamiento ante entradas inválidas (Ian)
 
 ---
 
