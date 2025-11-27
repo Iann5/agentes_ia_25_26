@@ -47,13 +47,13 @@
   - [x] Botones "Traducir" y "Limpiar"
   - [x] Resultado y lista de historial
 - [x] Crear `frontend/style.css` con estilos responsivos (Sergio)
-- [ ] Crear `frontend/main.js`: (Sergio)
-  - [ ] Fetch a `/api/translate`
-  - [ ] Mostrar traducción en UI
-  - [ ] Consultar `/api/translations` (historial)
-  - [ ] Eliminar traducciones del historial
-  - [ ] Manejar errores y estados de carga
-- [ ] Testear funcionalidad completa del frontend (Ian)
+- [x] Crear `frontend/main.js`: (Sergio)
+  - [x] Fetch a `/api/translate`
+  - [x] Mostrar traducción en UI
+  - [x] Consultar `/api/translations` (historial)
+  - [x] Eliminar traducciones del historial
+  - [x] Manejar errores y estados de carga
+- [x] Testear funcionalidad completa del frontend (Ian)
 
 ---
 
