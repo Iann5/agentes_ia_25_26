@@ -1,0 +1,14 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Dependencias
+node_modules/
+venv/
+
+# Archivos de compilación
+dist/
+build/
+
+# Archivos de logs
+*.log
