@@ -75,12 +75,12 @@
 ## 🐳 Parte 5: Dockerización (Ambos)
 
 - [x] Crear `backend/Dockerfile` (imagen base: node:20-alpine)
-- [ ] Crear `docker-compose.yml` con servicios:
-  - [ ] Backend (puerto 3000)
-  - [ ] Ollama (puerto 11434)
-  - [ ] Frontend (puerto 5173 o servido desde backend)
-- [ ] Configurar redes compartidas y variables `.env`
-- [ ] Ejecutar `docker compose up --build` y verificar funcionamiento
+- [x] Crear `docker-compose.yml` con servicios:
+  - [x] Backend (puerto 3000)
+  - [x] Ollama (puerto 11434)
+  - [x] Frontend (puerto 5173 o servido desde backend)
+- [x] Configurar redes compartidas y variables `.env`
+- [x] Ejecutar `docker compose up --build` y verificar funcionamiento
 
 ---
 
