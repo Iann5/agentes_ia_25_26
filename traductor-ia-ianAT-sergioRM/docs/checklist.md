@@ -10,7 +10,7 @@
 - [x] Inicializar repositorio Git (`git init`) (Ian)
 - [x] Crear rama `hito2/desarrollo-ia` (Ian)
 - [x] Crear `.gitignore`, `.env` y `.env.example` (Sergio)
-- [ ] Verificar instalación de Node.js, Docker y Ollama
+- [x] Verificar instalación de Node.js, Docker y Ollama
 
 ---
 
@@ -86,23 +86,23 @@
 
 ## 📖 Parte 6: Documentación (Ambos)
 
-- [ ] Completar `README.md` con:
-  - [ ] Descripción del proyecto
-  - [ ] Autores y división de trabajo
-  - [ ] Requisitos e instalación
-  - [ ] Ejecución local y con Docker
-  - [ ] Endpoints documentados con ejemplos
-  - [ ] Estructura de carpetas y decisiones de diseño
-  - [ ] Posibles mejoras futuras
-- [ ] Incluir capturas o ejemplos si procede
-- [ ] Añadir sección de créditos con “Co-authored-by”
+- [x] Completar `README.md` con:
+  - [x] Descripción del proyecto
+  - [x] Autores y división de trabajo
+  - [x] Requisitos e instalación
+  - [x] Ejecución local y con Docker
+  - [x] Endpoints documentados con ejemplos
+  - [x] Estructura de carpetas y decisiones de diseño
+  - [x] Posibles mejoras futuras
+- [x] Incluir capturas o ejemplos si procede
+- [x] Añadir sección de créditos con “Co-authored-by”
 
 ---
 
 ## 🌿 Parte 7: Git y Control de versiones (Ian)
 
-- [ ] Hacer commits incrementales y descriptivos
-- [ ] Mensajes de commit siguiendo convención (`feat:`, `fix:`, `docs:`)
+- [x] Hacer commits incrementales y descriptivos
+- [x] Mensajes de commit siguiendo convención (`feat:`, `fix:`, `docs:`)
 - [ ] Crear Pull Request hacia `main`
 - [ ] Incluir descripción, división de trabajo y cómo probarlo
 - [ ] Ambos figuran como coautores (`Co-authored-by`)
