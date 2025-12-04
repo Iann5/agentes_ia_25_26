@@ -120,7 +120,7 @@ ${text}
  * @param {Object} filtros - { sourceLang, targetLang, limit }
  * @returns {Array} Array de traducciones
  */
-export function obtenerTraducciones(filtros = {}) {
+export function obtenerTraducciones(filtros = {}, limit = 50) {
   let query = "SELECT * FROM traducciones";
   const condiciones = [];
   const params = [];
@@ -140,11 +140,10 @@ export function obtenerTraducciones(filtros = {}) {
     query += " WHERE " + condiciones.join(" AND ");
   }
 
-  query += " ORDER BY fecha DESC";
+  query += " ORDER BY created_at DESC";
 
-  const limite = Math.min(filtros.limit || 50, 50);
   query += " LIMIT ?";
-  params.push(limite);
+  params.push(limit);
 
   const stmt = db.prepare(query);
   const resultados = stmt.all(...params);
@@ -180,7 +179,6 @@ export function obtenerTraduccionPorId(id) {
  * @returns {Object} Confirmación de eliminación { success: true, mensaje: "..." }
  */
 export function eliminarTraduccion(id) {
-  const traduccion = obtenerTraduccionPorId(id);
 
   const stmt = db.prepare("DELETE FROM traducciones WHERE id = ?");
   const info = stmt.run(id);
