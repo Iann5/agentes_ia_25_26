@@ -94,17 +94,17 @@ traductor-ia-IanAT-SergioRM/
 
 Se usa un archivo `.env`. Debes crear primero un `.env.example` y luego copiarlo a `.env` para que funcione.
 
-### `.env.example` recomendado
+### `.env.example` del backend recomendado
 
 ```bash
 # Backend
 PORT=3000
-
-# Ollama en local
 OLLAMA_URL=http://localhost:11434
 OLLAMA_MODEL=mistral
+DB_PATH=./db/traducciones.db
 
-# Puertos expuestos por Docker Compose
+# Externo
+OLLAMA_URL=http://ollamaProyecto:11434
 BACKEND_PORT=3000
 FRONTEND_PORT=5173
 OLLAMA_PORT=11434
