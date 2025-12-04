@@ -42,12 +42,12 @@ GET {{apiUrl}}/translations?targetLang=en HTTP/1.1
 ### -------------------------------------
 ### READ - Translation by ID
 ### -------------------------------------
-GET {{apiUrl}}/translations/86 HTTP/1.1
+GET {{apiUrl}}/translations/97 HTTP/1.1
 
 ### -------------------------------------
 ### DELETE - Translation by ID
 ### -------------------------------------
-DELETE {{apiUrl}}/translations/86 HTTP/1.1
+DELETE {{apiUrl}}/translations/97 HTTP/1.1
 
 ### -------------------------------------
 ### DELETE - All translations
