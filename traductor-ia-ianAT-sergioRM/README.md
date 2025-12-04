@@ -1,4 +1,4 @@
-## 🌍 Traductor Inteligente (es / en / fr)
+# 🌍 Traductor Inteligente (es / en / fr)
 
 Aplicación que traduce textos entre Español, Inglés y Francés, integrada con Ollama como IA local y SQLite3 como base de datos para tener un historial de traducciones.
 
@@ -487,3 +487,11 @@ Content-Type: application/json
   - `hito2/desarrollo-ia`
 
 ---
+
+## Pruebas de error
+
+- Prueba de tocar el piano en el buscador
+![Piano Test](frontend/images/pianoTest.png)
+
+- Prueba de escribir en Inglés y traducir al Inglés, teniendo seleccionado el Español como input:
+![Language Test](frontend/images/languageTest.png)
