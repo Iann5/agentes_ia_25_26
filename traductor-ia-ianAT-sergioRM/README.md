@@ -14,7 +14,25 @@ El proyecto tiene:
 - **Ian Álvarez Triviño**
 - **Sergio Ramírez Morón**
 
-## 🧩 Requisitos del sistema
+## 📄 Índice
+
+1. [Requisitos del sistema](#requisitos-del-sistema)
+2. [Estructura de carpetas](#estructura-de-carpetas)
+3. [Tecnologías principales](#tecnologias-principales)
+4. [Variables de entorno](#variables-de-entorno)
+5. [Instalación](#instalación)
+6. [Ejecución sin Docker](#ejecución-sin-docker)
+7. [Ejecución con Docker Compose](#ejecución-con-docker-compose)
+8. [API REST – Endpoints](#api-rest-endpoints)
+9. [Lógica del backend y la base de datos](#lógica-del-backend-y-la-bd)
+10. [Frontend](#frontend-html-css-js)
+11. [Archivo de validación](#archivo-validacionhttp)
+12. [Decisiones de diseño](#decisiones-de-diseño)
+13. [Limitaciones conocidas](#limitaciones-conocidas)
+14. [Extensiones futuras](#extensiones-futuras)
+15. [Git y workflow](#git-y-workflow)
+
+## Requisitos del sistema
 
 - **Node.js**: v20+
 - **npm**: v10+
@@ -23,7 +41,7 @@ El proyecto tiene:
 - **Ollama** instalado localmente con un modelo de lenguaje:
   - **Modelo**: `mistral`
 
-## 📁 Estructura de carpetas
+## Estructura de carpetas
 
 ```text
 traductor-ia-IanAT-SergioRM/
@@ -56,7 +74,7 @@ traductor-ia-IanAT-SergioRM/
 
 ---
 
-## ⚙️ Tecnologías principales
+## Tecnologías principales
 
 - **Backend**:
   - `Node.js`, `Express`
@@ -72,7 +90,34 @@ traductor-ia-IanAT-SergioRM/
 
 ---
 
-## 📥 Instalación
+## Variables de entorno
+
+Se usa un archivo `.env`. Debes crear primero un `.env.example` y luego copiarlo a `.env` para que funcione.
+
+### `.env.example` recomendado
+
+```bash
+# Backend
+PORT=3000
+
+# Ollama en local
+OLLAMA_URL=http://localhost:11434
+OLLAMA_MODEL=mistral
+
+# Puertos expuestos por Docker Compose
+BACKEND_PORT=3000
+FRONTEND_PORT=5173
+OLLAMA_PORT=11434
+```
+
+- **En local**:
+  - El backend usará `PORT` y `OLLAMA_URL=http://localhost:11434`.
+- **En Docker**:
+
+  - El backend debe usar `OLLAMA_URL=http://ollama:11434`.
+  - Los puertos `BACKEND_PORT`, `FRONTEND_PORT`, `OLLAMA_PORT` controlan `localhost`.
+
+## Instalación
 
 ### 1. Clonar el repositorio
 
@@ -87,13 +132,13 @@ cd traductor-ia-IanAT-SergioRM
 cp .env.example .env
 ```
 
-### 2. Instalar modelo mistral
+### 3. Instalar modelo mistral
 
 ```bash
 ollama pull mistral
 ```
 
-## ▶️ Ejecución sin Docker
+## Ejecución sin Docker
 
 ### 1. Lanzar Ollama
 
@@ -120,15 +165,36 @@ El frontend es estático, por lo que se recomienda abrirlo con liveServer o abri
 
 - **Recomendación**: servirlo con un servidor estático (extensión Live Server):
 
-Ell frontend llama a las siguientes URL por defecto:
+El frontend llama a las siguientes URL por defecto:
 
 - `http://localhost:3000/api/translate`
 - `http://localhost:3000/api/translations`
 
 Asegúrate de que el backend esté corriendo en ese puerto, si no, no funcionará.
 
+## Ejecución con Docker Compose
 
-## 🌐 API REST – Endpoints
+Desde la **raíz del proyecto** ejecutamos:
+
+```bash
+docker compose up --build
+```
+
+El `docker-compose.yml` levanta tiene que levantar tres servicios:
+
+- **backend**:
+  - Ruta creación Dockerfile: `backend/Dockerfile`
+  - Se usa `BACKEND_PORT:3000` (por defecto usamos el puerto `3000:3000`)
+  - Usa `.env` para configuración
+- **frontend**:
+  - Ruta creación Dockerfile: `frontend/Dockerfile`
+  - Se usa `FRONTEND_PORT:5173` (por defecto usamos el puerto `5173:5173`)
+- **ollama**:
+  - La imagen que instalamos `ollama/ollama:latest`
+  - Se usa `OLLAMA_PORT:11434` (por defecto usamos el puerto `11434:11434`)
+    ![Docker](frontend/images/dockerWorking.png)
+
+## API REST – Endpoints
 
 Todos los endpoints tienen un `/api` delante.
 
@@ -144,6 +210,8 @@ Todos los endpoints tienen un `/api` delante.
   "ollama": "http://localhost:11434"
 }
 ```
+
+![Health](frontend/images/apiHealth.png)
 
 ---
 
@@ -184,7 +252,7 @@ Todos los endpoints tienen un `/api` delante.
 }
 ```
 
----
+## ![Translation](frontend/images/apiTranslation.png)
 
 ### GET `/api/translations`
 
@@ -219,7 +287,7 @@ Todos los endpoints tienen un `/api` delante.
 ]
 ```
 
----
+## ![Translations](frontend/images/apiTranslations.png)
 
 ### GET `/api/translations/:id`
 
@@ -246,7 +314,7 @@ GET /api/translations/1
 }
 ```
 
----
+## ![Translation Id](frontend/images/apiTranslationId.png)
 
 ### DELETE `/api/translations/:id`
 
@@ -267,7 +335,7 @@ DELETE /api/translations/5
 - `deleted: 1`: Significa que se ha borrado una fila.
 - `deleted: 0`: Significa que no existe una traducción con ese id.
 
----
+## ![Delete Id](frontend/images/apiDeleteId.png)
 
 ### DELETE `/api/translations`
 
@@ -278,6 +346,8 @@ DELETE /api/translations/5
 ```http
 DELETE /api/translations
 ```
+
+![Delete All](frontend/images/apiDeleteAll.png)
 
 **Respuesta (200):**
 
@@ -301,7 +371,107 @@ DELETE /api/translations
 ]
 ```
 
-## 🚀 Extensiones futuras
+![Languages](frontend/images/apiLanguages.png)
+
+## Lógica del backend y la BD
+
+- **`db.js`**:
+  - Creamos la BD en `backend/db/traducciones.db`.
+  - Creamos la tabla `traducciones` con:
+    - `id`, `texto_original`, `texto_traducido`, `idioma_origen`, `idioma_destino`,
+      `modelo`, `duracion_ms`, `created_at`.
+- **`services.js`**:
+  - `validarIdioma(codigo)`: comprueba si el código está en `["es","en","fr"]`.
+  - `traducir(text, sourceLang, targetLang)`:
+    - Comprueba las entradas, construye el prompt para Ollama, mide el tiempo que tarda,
+      lo guarda en la BD y devuelve los metadatos.
+  - `obtenerTraducciones(filtros)`: usa filtros por idioma y límite de resultados que hay por ese idioma.
+  - `obtenerTraduccionPorId(id)`: recupera una traducción por id, y si no funciona, lanza un error
+  - `eliminarTraduccion(id)`: elimina una traducción con dicha id.
+  - `limpiarHistorial()`: borra todas las traducciones de la tabla.
+
+## Frontend (HTML, CSS, JS)
+
+- **`index.html`**:
+
+  - Formulario con:
+    - Selector de idioma origen (`es`, `en`, `fr`).
+    - Selector de idioma destino (`es`, `en`, `fr`).
+    - Textarea para escribir el texto que quieres traducir.
+    - Botones Traducir y Limpiar.
+  - Secciones:
+    - Resultado de la traducción.
+    - Historial de traducciones.
+    - Mensajes de error y un mensaje con el estado de carga.
+
+- **`style.css`**:
+
+  - Diseño responsive y limpio, con:
+    - Centrado y tarjetas.
+    - Estilos de botones, mensajes de error y resultados.
+    - Uso de mediaqueries para otro tamaño de pantallas.
+
+- **`main.js`**:
+  - `cargarHistorial()`:
+    - Hace `GET /api/translations` y rellena el contenedor con id `lista-historial`.
+  - Manejar el formulario:
+    - Envía `POST /api/translate` y muestra el `texto_traducido`.
+    - Actualiza historial después de cada traducción.
+    - Muestra indicador de carga y errores en caso de que los haya.
+  - Botón de Borrar historial:
+    - Llama a `DELETE /api/translations` y actualiza la lista.
+      ![Frontend](frontend/images/frontendWorking.png)
+
+---
+
+## Archivo `validacion.http`
+
+Se utiliza con la extensión REST Client de VS Code y tiene pruebas:
+
+- `GET /api/health`
+- `POST /api/translate` (válidos y con errores)
+- `GET /api/translations`
+- `GET /api/translations/:id`
+- `DELETE /api/translations/:id`
+- `DELETE /api/translations`
+- `GET /api/languages`
+
+Ejemplo:
+
+```http
+POST http://localhost:3000/api/translate
+Content-Type: application/json
+
+{
+  "text": "Hola mundo",
+  "sourceLang": "es",
+  "targetLang": "en"
+}
+```
+
+## Decisiones de diseño
+
+- **SQLite3 en lugar de JSON/archivos**:
+  - Mejor rendimiento y filtrado (`WHERE idioma_origen=...`).
+  - Persistencia entre sesiones y escalabilidad.
+- **JavaScript vanilla en el frontend**:
+  - Objetivo didáctico: entender consumo de APIs y manipulación de DOM sin frameworks.
+- **Ollama local**:
+
+  - No depende de servicios externos.
+  - Permite desarrollar sin coste de APIs comerciales.
+
+## Limitaciones conocidas
+
+- Solo soporta **3 idiomas**: `es`, `en`, `fr`.
+- Límite de **5000 caracteres** por texto.
+- Sin autenticación (El historial es global).
+- El frontend asume backend en `http://localhost:3000`.
+- Mensajes de error en la UI simplificados.
+
+---
+
+## Extensiones futuras
 
 - Soporte para más idiomas.
 - Caché de traducciones frecuentes.
@@ -311,7 +481,7 @@ DELETE /api/translations
 
 ---
 
-## 🌿 Git y workflow
+## Git y workflow
 
 - **Rama**:
   - `hito2/desarrollo-ia`
