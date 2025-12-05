@@ -9,12 +9,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const listaHistorial = document.getElementById("lista-historial");
   const btnBorrarHistorial = document.getElementById("btn-borrar-historial");
   const mensajeError = document.getElementById("mensaje-error");
+  const filtroOrigen = document.getElementById("filtro-origen");
+  const filtroDestino = document.getElementById("filtro-destino");
+  const btnFiltrar = document.getElementById("btn-filtrar");
 
-  // Función para mostrar historial
-  async function cargarHistorial() {
+  async function cargarHistorial(sourceLang = "", targetLang = "") {
     try {
-      const res = await fetch("http://localhost:3000/api/translations");
+      let url = "http://localhost:3000/api/translations";
+
+      const params = [];
+      if (sourceLang) params.push(`sourceLang=${sourceLang}`);
+      if (targetLang) params.push(`targetLang=${targetLang}`);
+
+      if (params.length > 0) {
+        url += "?" + params.join("&");
+      }
+
+      const res = await fetch(url);
       const data = await res.json();
+
       listaHistorial.innerHTML = "";
       data.forEach((item) => {
         const li = document.createElement("li");
@@ -76,6 +89,13 @@ document.addEventListener("DOMContentLoaded", () => {
       mensajeError.textContent = "No se pudo borrar el historial";
       mensajeError.parentElement.hidden = false;
     }
+  });
+
+  // Filtrar historial
+  btnFiltrar.addEventListener("click", () => {
+    const origen = filtroOrigen.value;
+    const destino = filtroDestino.value;
+    cargarHistorial(origen, destino);
   });
 
   // Cargar historial al inicio

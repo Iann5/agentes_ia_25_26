@@ -39,7 +39,7 @@ El proyecto tiene:
 - **Docker**: 24+
 - **Docker Compose**: V2
 - **Ollama** instalado localmente con un modelo de lenguaje:
-  - **Modelo**: `mistral`
+  - **Modelo Recomendado**: `mistral`
 
 ## Estructura de carpetas
 
