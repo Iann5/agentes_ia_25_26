@@ -57,6 +57,7 @@ export async function traducir(text, sourceLang, targetLang) {
   const prompt = `
 Eres un traductor profesional. Traduce el siguiente texto del idioma ${sourceNombre}
 al idioma ${targetNombre}. Responde ÚNICAMENTE con el texto traducido, sin comentarios extra.
+En caso de que el texto no pueda ser traducido, responde con el mismo mensaje a traducir ${text}.
 
 Texto a traducir:
 ${text}
@@ -111,7 +112,6 @@ ${text}
     duracion_ms: duracion,
   };
 }
-
 
 /**
  * Recupera traducciones guardadas en la BD.
@@ -179,7 +179,6 @@ export function obtenerTraduccionPorId(id) {
  * @returns {Object} Confirmación de eliminación { success: true, mensaje: "..." }
  */
 export function eliminarTraduccion(id) {
-
   const stmt = db.prepare("DELETE FROM traducciones WHERE id = ?");
   const info = stmt.run(id);
 
