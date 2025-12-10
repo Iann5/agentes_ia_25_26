@@ -103,6 +103,6 @@
 
 - [x] Hacer commits incrementales y descriptivos
 - [x] Mensajes de commit siguiendo convención (`feat:`, `fix:`, `docs:`)
-- [ ] Crear Pull Request hacia `main`
-- [ ] Incluir descripción, división de trabajo y cómo probarlo
-- [ ] Ambos figuran como coautores (`Co-authored-by`)
+- [x] Crear Pull Request hacia `main`
+- [x] Incluir descripción, división de trabajo y cómo probarlo
+- [x] Ambos figuran como coautores (`Co-authored-by`)
