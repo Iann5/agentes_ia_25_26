@@ -97,18 +97,14 @@ Se usa un archivo `.env`. Debes crear primero un `.env.example` y luego copiarlo
 ### `.env.example` del backend recomendado
 
 ```bash
-# Backend cuando sea en local
-PORT=3000
-OLLAMA_URL=http://localhost:11434
-OLLAMA_MODEL=mistral
-DB_PATH=./db/traducciones.db
-
-# Raíz cuando sea con Docker
+# ENV NECESARIO
 OLLAMA_URL=http://ollamaProyecto:11434
 BACKEND_PORT=3000
 FRONTEND_PORT=5173
 OLLAMA_PORT=11434
 OLLAMA_MODEL=mistral
+PORT=3000
+DB_PATH=./db/traducciones.db
 ```
 
 - **En local**:
