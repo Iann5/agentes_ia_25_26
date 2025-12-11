@@ -1,7 +1,7 @@
 // backend/routes.js
 import { Router } from 'express';
 import db from './db.js';
-import { traducir } from './services.js';
+import { eliminarTraduccion, limpiarHistorial, obtenerTraducciones, obtenerTraduccionPorId, traducir } from './services.js';
 
 const router = Router();
 
@@ -36,29 +36,14 @@ router.post("/translate", async (req, res) => {
 // 🟢 GET /api/translations
 router.get('/translations', (req, res) => {
   const { sourceLang, targetLang } = req.query;
-
-  let sql = 'SELECT * FROM traducciones WHERE 1=1';
-  const params = [];
-
-  if (sourceLang) {
-    sql += ' AND idioma_origen = ?';
-    params.push(sourceLang);
-  }
-  if (targetLang) {
-    sql += ' AND idioma_destino = ?';
-    params.push(targetLang);
-  }
-
-  sql += ' ORDER BY created_at DESC';
-
-  const rows = db.prepare(sql).all(...params);
+  const rows = obtenerTraducciones(req.query, 50);
   res.json(rows);
 });
 
 // 🟢 GET /api/translations/:id
 router.get('/translations/:id', (req, res) => {
   const id = Number(req.params.id);
-  const row = db.prepare('SELECT * FROM traducciones WHERE id = ?').get(id);
+  const row = obtenerTraduccionPorId(id);
 
   if (!row) return res.status(404).json({ error: 'No encontrado' });
 
@@ -68,18 +53,16 @@ router.get('/translations/:id', (req, res) => {
 // 🟢 DELETE /api/translations/:id
 router.delete('/translations/:id', (req, res) => {
   const id = Number(req.params.id);
-  const stmt = db.prepare('DELETE FROM traducciones WHERE id = ?');
-  const result = stmt.run(id);
+  const result = eliminarTraduccion(id);
 
-  res.json({ deleted: result.changes });
+  res.json({ deleted: result.mensaje });
 });
 
 // 🟢 DELETE /api/translations
 router.delete('/translations', (req, res) => {
-  const stmt = db.prepare('DELETE FROM traducciones');
-  const result = stmt.run();
+  const result = limpiarHistorial();
 
-  res.json({ deleted: result.changes });
+  res.json({ deleted: result.eliminadas });
 });
 
 // 🟢 GET /api/languages
