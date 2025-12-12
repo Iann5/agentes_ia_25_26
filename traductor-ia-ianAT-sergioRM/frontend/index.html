@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+    <title>Traductor</title>
+  </head>
+  <body>
+    <header>
+      <h1>Traductor</h1>
+    </header>
+
+    <main>
+      <section>
+        <form id="form-traduccion">
+          <p>
+            Introduce el texto, elige idiomas y pulsa en
+            <strong>Traducir</strong>.
+          </p>
+
+          <div class="idioma-seleccion">
+            <h4>Configuración de idiomas</h4>
+
+            <div>
+              <label for="idioma-origen">Idioma origen</label>
+              <select id="idioma-origen" name="idioma-origen">
+                <option value="es" selected>Español</option>
+                <option value="en">Inglés</option>
+                <option value="fr">Francés</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="idioma-destino">Idioma destino</label>
+              <select id="idioma-destino" name="idioma-destino">
+                <option value="en" selected>Inglés</option>
+                <option value="es">Español</option>
+                <option value="fr">Francés</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="texto-origen">Texto a traducir</label>
+            <textarea
+              id="texto-origen"
+              name="texto-origen"
+              placeholder="Escribe aquí tu texto..."
+            ></textarea>
+          </div>
+
+          <div>
+            <button type="submit">Traducir</button>
+            <button type="reset">Limpiar</button>
+          </div>
+        </form>
+      </section>
+
+      <section>
+        <h3>Resultado</h3>
+        <p id="texto-traducido">Resultado de la traducción</p>
+        <div id="indicador-carga" hidden>Traduciendo...</div>
+      </section>
+
+      <section>
+        <h3>Filtrar historial</h3>
+
+        <label for="filtro-origen">Idioma origen: </label>
+        <select id="filtro-origen">
+          <option value="">Todos</option>
+          <option value="es">Español</option>
+          <option value="en">Inglés</option>
+          <option value="fr">Francés</option>
+        </select>
+
+        <label for="filtro-destino">Idioma destino: </label>
+        <select id="filtro-destino">
+          <option value="">Todos</option>
+          <option value="es">Español</option>
+          <option value="en">Inglés</option>
+          <option value="fr">Francés</option>
+        </select>
+
+        <button id="btn-filtrar">Filtrar</button>
+      </section>
+
+      <section>
+        <h2>Historial</h2>
+        <ul id="lista-historial"></ul>
+        <button id="btn-borrar-historial">Borrar historial</button>
+      </section>
+
+      <section id="error-box" hidden>
+        <h3>Error:</h3>
+        <div id="mensaje-error"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 Traductor Proyecto Ian y Sergio</p>
+    </footer>
+  </body>
+</html>
